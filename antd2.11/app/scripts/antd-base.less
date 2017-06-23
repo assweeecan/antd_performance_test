@@ -1,0 +1,82 @@
+// 载入选项
+@import "~antd/lib/style/themes/default.less";
+
+// 改变一些选项配置
+// 改变圆角
+@border-radius-base: 4px;
+@border-radius-sm: 2px;
+// 改变字体
+@font-size-base: 14px;
+
+// 载入样式
+@icon-url: "../../../../../app/scripts/styles/ux_1474179085_271612/iconfont";
+
+@import "~antd/lib/style/core/index.less";
+@import "~antd/lib/style/components.less";
+
+//@icon-fix-url: "../static/antd_font/";
+//@font-face {font-family: 'anticon';
+//  src: url('@{icon-fix-url}iconfont.eot'); /* IE9*/
+//  src: url('@{icon-fix-url}iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+//  url('@{icon-fix-url}iconfont.woff') format('woff'), /* chrome、firefox */
+//  url('@{icon-fix-url}iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+//  url('@{icon-fix-url}iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+//}
+
+html, body, * {
+  font-family: 'Microsoft YaHei';
+}
+
+// radio样式修复
+.ant-radio-wrapper {
+  cursor: pointer;
+}
+
+// badget的动画bug修复
+.badge-prefix-cls {
+  &-zoom-appear,
+  &-zoom-enter {
+    animation: antZoomBadgeIn .3s;
+    animation-fill-mode: both;
+  }
+
+  &-zoom-leave {
+    animation: antZoomBadgeOut .3s;
+    animation-fill-mode: both;
+  }
+}
+
+@keyframes antZoomBadgeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes antZoomBadgeOut {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+.ant-search-input-wrapper {
+  text-align: left;
+
+  .ant-input-wrapper .ant-input {
+    padding-right: 33px;
+  }
+  &.ant-input-group-lg .ant-input-wrapper .ant-input {
+    padding-right: 37px;
+  }
+}
+
+.ant-form-item .ant-form-item-control .ant-btn {
+  top: -1px;
+}

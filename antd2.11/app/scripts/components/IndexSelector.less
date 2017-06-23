@@ -1,0 +1,110 @@
+.index-selector {
+  height: 60px;
+  z-index: 10;
+  overflow: hidden;
+
+  .top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background: #fff;
+    border-bottom: 1px solid #ededed;
+    overflow: hidden;
+    box-shadow: 0 1px 6px rgba(100, 100, 100, 0.2);
+
+    .ant-tabs-bar {
+      margin-bottom: 0;
+      border-bottom: 0;
+    }
+    .top-bar-next-panel > div {
+      padding: 8px 20px;
+    }
+
+    .top-bar-panel {
+      overflow: hidden;
+      padding: 10px 20px;
+
+      .top-bar-panel-item {
+        padding: 10px 20px;
+        cursor: pointer;
+        float: left;
+      }
+      > * {
+        padding: 10px 20px;
+      }
+
+      .top-bar-panel-item:last-of-type {
+        margin-right: 20px;
+      }
+      .top-bar-panel-city-list {
+        text-align: right;
+      }
+      .anticon {
+        margin-left: 10px;
+      }
+    }
+
+    .anticon-down {
+      transition: transform 0.2s;
+    }
+    .anticon-down.active {
+      transform: rotate(180deg);
+    }
+  }
+
+  .top-bar {
+    transition: height 0.2s;
+    overflow: hidden;
+    height: 60px;
+  }
+
+  .top-bar.visible {
+    height: 120px;
+  }
+}
+
+.index-selector-modal {
+  .ant-checkbox {
+    display: none;
+  }
+
+  .ant-checkbox + span {
+    transition: color 0.2s;
+  }
+  .ant-checkbox.ant-checkbox-checked + span {
+    color: #2db7f5;
+  }
+  .index-selector-box > .ant-col-3 {
+    height: 60px;
+  }
+
+  .index-select-modal-footer-left {
+    text-align: left;
+  }
+
+  .ant-modal-body {
+    padding: 10px;
+  }
+
+  .index-select-modal-body {
+    overflow-x: auto;
+  }
+
+  .ant-tabs-nav .ant-tabs-tab-inner > span {
+    transition: color 0.2s;
+  }
+
+  .ant-tabs-nav .ant-tabs-tab-inner > span.active {
+    color: #2db7f5;
+  }
+
+  .index-select-modal-clean-btn {
+    color: #666;
+    transition: color 0.2s;
+  }
+  .index-select-modal-clean-btn:hover {
+    color: #2db7f5;
+  }
+}
