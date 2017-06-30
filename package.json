@@ -8,7 +8,8 @@
   },
   "scripts": {
     "start": "webpack-dev-server --progress",
-    "build": "del /Q .\\build & rm -rf ./build & webpack --config webpack.build.config.js"
+    "buildstart": "webpack --progress  --config webpack.config.js",
+    "build": "del /Q .\\build & rm -rf ./build & webpack --progress --config webpack.build.config.js"
   },
   "author": "",
   "license": "ISC",

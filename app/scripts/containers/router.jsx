@@ -19,7 +19,7 @@ import TagPage from './tag-page';
 import Header from '../components/header';
 import NavBar from '../containers/nav-bar';
 
-const history = createBrowserHistory();
+const history = createBrowserHistory({ basename: '/antd_performance_test/dist/' });
 
 const store = createStore(
   combineReducers({
@@ -32,10 +32,12 @@ const store = createStore(
   ),
 );
 
+console.log(history);
+
 
 const RouterComponent = () => (
   <Provider store={store}>
-    <ConnectedRouter history={history} basename="/antd_performance_test/dist">
+    <ConnectedRouter history={history}>
       <div className="content">
         <Header />
         <div className="page-wrapper">
