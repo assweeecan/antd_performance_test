@@ -35,7 +35,7 @@ const store = createStore(
 
 const RouterComponent = () => (
   <Provider store={store}>
-    <ConnectedRouter history={history}>
+    <ConnectedRouter history={history} basename="/antd_performance_test/dist">
       <div className="content">
         <Header />
         <div className="page-wrapper">

@@ -21,7 +21,7 @@ module.exports = function (env = defaultEnv) {
     output: {
       path: path.join(ROOT_PATH, 'dist'),
       filename: '[name].js',
-      publicPath: '/',
+      publicPath: '/antd_performance_test/dist',
     },
 
     // 开启source-map

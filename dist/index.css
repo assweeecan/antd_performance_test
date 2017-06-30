@@ -551,9 +551,9 @@ samp {
 }
 @font-face {
   font-family: 'anticon';
-  src: url(/iconfont.eot);
+  src: url(/antd_performance_test/disticonfont.eot);
   /* IE9*/
-  src: url(/iconfont.eot?#iefix) format('embedded-opentype'),  url(/iconfont.woff) format('woff'),  url(/iconfont.ttf) format('truetype'),  url(/iconfont.svg#iconfont) format('svg');
+  src: url(/antd_performance_test/disticonfont.eot?#iefix) format('embedded-opentype'),  url(/antd_performance_test/disticonfont.woff) format('woff'),  url(/antd_performance_test/disticonfont.ttf) format('truetype'),  url(/antd_performance_test/disticonfont.svg#iconfont) format('svg');
 }
 .anticon {
   display: inline-block;
