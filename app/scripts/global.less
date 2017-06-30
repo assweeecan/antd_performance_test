@@ -1,0 +1,87 @@
+// 载入选项
+@import "~antd/lib/style/themes/default.less";
+
+// 改变一些选项配置
+// 改变圆角
+//@border-radius-base: 3px;
+//@border-radius-sm: 2px;
+// 改变字体
+//@font-size-base: 14px;
+
+// 载入样式
+@icon-url: "~antd_font/iconfont";
+
+@import "~antd/lib/style/core/index.less";
+@import "~antd/lib/style/components.less";
+
+html, body, * {
+  font-family: 'Microsoft YaHei';
+}
+
+// radio group 高度修复
+.ant-radio-group {
+  height: 28px;
+  &.ant-radio-group-small {
+    height: 22px;
+  }
+  &.ant-radio-group-large {
+    height: 32px;
+  }
+}
+
+//
+//// 修复表单中元素高度不统一的bug
+//.ant-select-selection--multiple {
+//  height: 28px;
+//  overflow: hidden;
+//}
+//
+//.ant-select-lg .ant-select-selection--multiple {
+//  height: 32px;
+//}
+//
+//.ant-select-sm .ant-select-selection--multiple {
+//  height: 22px;
+//}
+//
+//.ant-form-item-required:before {
+//  height: 16px;
+//}
+
+// 修改loading动画，加阴影
+.ant-spin {
+  transition: opacity 0.5s;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+body, .page-wrapper {
+  background: #ececec;
+}
+
+.app-body {
+  background: #fff;
+}
+
+.main-menu {
+}
+
+.app-header {
+  padding-left: 20px;
+  padding-rignt: 20px;
+}
+
+.app-body {
+  padding-top: 20px;
+}
+
+.no-anime .ant-checkbox-checked .ant-checkbox-inner:after {
+  transition: unset;
+}
+
+.no-anime .ant-checkbox-inner:after {
+  transition: unset;
+}
+
+.no-anime .ant-checkbox-inner {
+  transition: unset;
+}

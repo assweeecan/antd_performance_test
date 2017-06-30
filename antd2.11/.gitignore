@@ -1,9 +1,0 @@
-/node_modules/
-/build/
-/npm-debug.log.*
-/dev/
-/output/
-/build*.zip
-/.vscode/
-/.idea/
-/.svn/
