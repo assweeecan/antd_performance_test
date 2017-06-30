@@ -19,7 +19,7 @@ module.exports = function (env = defaultEnv) {
 
     // 输出路径
     output: {
-      path: path.join(ROOT_PATH, 'dev/antd_performance_test/dist/'),
+      path: path.join(ROOT_PATH, 'dev'),
       filename: '[name].js',
       publicPath: '/',
     },

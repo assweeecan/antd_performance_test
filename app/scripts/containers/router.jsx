@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { applyMiddleware, createStore, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { Redirect, Route, Switch } from 'react-router';
-import { createBrowserHistory } from 'history';
+import { createHashHistory } from 'history';
 import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
 
 import { Col, Row } from 'antd';
@@ -19,7 +19,7 @@ import TagPage from './tag-page';
 import Header from '../components/header';
 import NavBar from '../containers/nav-bar';
 
-const history = createBrowserHistory({ basename: '/antd_performance_test/dist/' });
+const history = createHashHistory();
 
 const store = createStore(
   combineReducers({
