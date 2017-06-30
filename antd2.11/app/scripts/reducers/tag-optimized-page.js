@@ -1,6 +1,6 @@
 import {
-  SET_TAG_PAGE_TAG_DATA_SOURCE,
-  SET_TAG_PAGE_TAG_2_DATA_SOURCE,
+  SET_TAG_OPTIMIZED_PAGE_TAG_DATA_SOURCE,
+  SET_TAG_OPTIMIZED_PAGE_TAG_2_DATA_SOURCE,
 } from '../constants';
 
 const defaultState = {
@@ -8,14 +8,14 @@ const defaultState = {
   tag2DataSource: [],
 };
 
-const tagPage = (state = defaultState, action) => {
+const tagOptimizedPage = (state = defaultState, action) => {
   switch (action.type) {
-    case SET_TAG_PAGE_TAG_DATA_SOURCE:
+    case SET_TAG_OPTIMIZED_PAGE_TAG_DATA_SOURCE:
       return {
         ...state,
         tagDataSource: action.param,
       };
-    case SET_TAG_PAGE_TAG_2_DATA_SOURCE:
+    case SET_TAG_OPTIMIZED_PAGE_TAG_2_DATA_SOURCE:
       return {
         ...state,
         tag2DataSource: action.param,
@@ -25,4 +25,4 @@ const tagPage = (state = defaultState, action) => {
   }
 };
 
-export default tagPage;
+export default tagOptimizedPage;

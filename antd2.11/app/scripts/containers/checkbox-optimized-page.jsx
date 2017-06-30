@@ -5,24 +5,24 @@ import {
   Button, Checkbox, Col, Form, Icon, Row,
 } from 'antd';
 
-import * as actions from '../actions/checkbox-page';
+import * as actions from '../actions/checkbox-optimized-page';
 
 const FormItem = Form.Item;
 const CheckboxGroup = Checkbox.Group;
 
 
-class CheckboxPage extends React.Component {
+class CheckboxOptimizedPage extends React.Component {
   componentDidMount() {
     const { init } = this.props;
     init();
   }
 
   componentWillUpdate() {
-    console.time('CheckboxOptimizedPage');
+    console.time('CheckboxPage');
   }
 
   componentDidUpdate() {
-    console.timeEnd('CheckboxOptimizedPage');
+    console.timeEnd('CheckboxPage');
   }
 
   handleSelectAllChange = (event) => {
@@ -47,7 +47,6 @@ class CheckboxPage extends React.Component {
     }
   }
 
-
   formItemStyle = {
     labelCol: {
       md: { span: 6 },
@@ -66,6 +65,7 @@ class CheckboxPage extends React.Component {
     },
   }
 
+
   render() {
     const {
       formItemStyle,
@@ -81,47 +81,50 @@ class CheckboxPage extends React.Component {
 
     return (
       <Form layout="horizontal" onSubmit={this.handleSubmit}>
-        <FormItem
-          label="下拉多选框"
-          {...formItemStyle}
-        >
-          <Checkbox onChange={this.handleSelectAllChange}>全选</Checkbox>
-          <div style={{ maxHeight: 300, overflowY: 'auto' }}>
-            {getFieldDecorator('select', {})(
-              <CheckboxGroup options={checkboxDataSource} />
-            )}
-          </div>
-        </FormItem>
-        <FormItem
-          label="下拉多选框"
-          {...formItemStyle}
-        >
-          <Checkbox onChange={this.handleSelectAll2Change}>全选</Checkbox>
-          <div style={{ maxHeight: 300, overflowY: 'auto' }}>
-            {getFieldDecorator('select2', {})(
-              <CheckboxGroup options={checkbox2DataSource} />
-            )}
-          </div>
-        </FormItem>
-        <FormItem
-          {...formItemNoLabelStyle}
-        >
-          <Button type="primary" htmlType="submit">确定</Button>
-        </FormItem>
+        <div className="no-anime">
+          <FormItem
+            label="下拉多选框"
+            {...formItemStyle}
+          >
+            <Checkbox onChange={this.handleSelectAllChange}>全选</Checkbox>
+            <div style={{ maxHeight: 300, overflowY: 'auto' }}>
+              {getFieldDecorator('select', {})(
+                <CheckboxGroup options={checkboxDataSource} />
+              )}
+            </div>
+          </FormItem>
+
+          <FormItem
+            label="下拉多选框"
+            {...formItemStyle}
+          >
+            <Checkbox onChange={this.handleSelectAll2Change}>全选</Checkbox>
+            <div style={{ maxHeight: 300, overflowY: 'auto' }}>
+              {getFieldDecorator('select2', {})(
+                <CheckboxGroup options={checkbox2DataSource} />
+              )}
+            </div>
+          </FormItem>
+          <FormItem
+            {...formItemNoLabelStyle}
+          >
+            <Button type="primary" htmlType="submit">确定</Button>
+          </FormItem>
+        </div>
       </Form>
     );
   }
 }
 
-CheckboxPage.defaultProps = {};
+CheckboxOptimizedPage.defaultProps = {};
 
-CheckboxPage.propTypes = {};
+CheckboxOptimizedPage.propTypes = {};
 
 function mapStateToProps(state) {
-  return state.checkboxPage;
+  return state.checkboxOptimizedPage;
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(actions, dispatch);
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Form.create()(CheckboxPage));
+export default connect(mapStateToProps, mapDispatchToProps)(Form.create()(CheckboxOptimizedPage));

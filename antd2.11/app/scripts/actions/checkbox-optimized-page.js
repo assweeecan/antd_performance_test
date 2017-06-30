@@ -4,12 +4,12 @@ import sleep from '../utils/sleep-promise';
 import uuidv4 from 'uuid/v4';
 
 import {
-  SET_CHECKBOX_PAGE_CHECKBOX_DATA_SOURCE,
-  SET_CHECKBOX_PAGE_CHECKBOX_2_DATA_SOURCE,
+  SET_CHECKBOX_OPTIMIZED_PAGE_CHECKBOX_DATA_SOURCE,
+  SET_CHECKBOX_OPTIMIZED_PAGE_CHECKBOX_2_DATA_SOURCE,
 } from '../constants';
 
-export const setCheckboxDataSource = makeActionCreator(SET_CHECKBOX_PAGE_CHECKBOX_DATA_SOURCE, 'param');
-export const setCheckbox2DataSource = makeActionCreator(SET_CHECKBOX_PAGE_CHECKBOX_2_DATA_SOURCE, 'param');
+export const setCheckboxDataSource = makeActionCreator(SET_CHECKBOX_OPTIMIZED_PAGE_CHECKBOX_DATA_SOURCE, 'param');
+export const setCheckbox2DataSource = makeActionCreator(SET_CHECKBOX_OPTIMIZED_PAGE_CHECKBOX_2_DATA_SOURCE, 'param');
 
 export function fetchGetCheckboxDataSource() {
   return async (dispatch) => {

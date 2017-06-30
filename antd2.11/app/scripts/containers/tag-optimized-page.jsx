@@ -2,10 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
-  Form, Select, Input, Radio, Button, Col, Tag,
+  Form, Select, Input, Radio, Button, Col,
 } from 'antd';
+import TagGroupA from '../components/commons/tag-group';
 
-import * as actions from '../actions/tag-page';
+import * as actions from '../actions/tag-optimized-page';
 
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -13,18 +14,18 @@ const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
 
 
-class TagPage extends React.Component {
+class TagOptimizedPage extends React.Component {
   componentDidMount() {
     const { init } = this.props;
     init();
   }
 
   componentWillUpdate() {
-    console.time('TagPage');
+    console.time('TagOptimizedPage');
   }
 
   componentDidUpdate() {
-    console.timeEnd('TagPage');
+    console.timeEnd('TagOptimizedPage');
   }
 
   formItemStyle = {
@@ -75,9 +76,7 @@ class TagPage extends React.Component {
           {...formItemStyle}
         >
           <div style={{ maxHeight: 300, overflowY: 'auto' }}>
-            {tagDataSource.map(e => (
-              <Tag key={e.value}>{e.label}</Tag>
-            ))}
+            <TagGroupA options={tagDataSource} />
           </div>
         </FormItem>
 
@@ -91,15 +90,15 @@ class TagPage extends React.Component {
   }
 }
 
-TagPage.defaultProps = {};
+TagOptimizedPage.defaultProps = {};
 
-TagPage.propTypes = {};
+TagOptimizedPage.propTypes = {};
 
 function mapStateToProps(state) {
-  return state.tagPage;
+  return state.tagOptimizedPage;
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(actions, dispatch);
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Form.create()(TagPage));
+export default connect(mapStateToProps, mapDispatchToProps)(Form.create()(TagOptimizedPage));

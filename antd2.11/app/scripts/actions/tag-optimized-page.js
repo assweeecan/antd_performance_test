@@ -4,12 +4,12 @@ import sleep from '../utils/sleep-promise';
 import uuidv4 from 'uuid/v4';
 
 import {
-  SET_TAG_PAGE_TAG_DATA_SOURCE,
-  SET_TAG_PAGE_TAG_2_DATA_SOURCE,
+  SET_TAG_OPTIMIZED_PAGE_TAG_DATA_SOURCE,
+  SET_TAG_OPTIMIZED_PAGE_TAG_2_DATA_SOURCE,
 } from '../constants';
 
-export const setTagDataSource = makeActionCreator(SET_TAG_PAGE_TAG_DATA_SOURCE, 'param');
-export const setTag2DataSource = makeActionCreator(SET_TAG_PAGE_TAG_2_DATA_SOURCE, 'param');
+export const setTagDataSource = makeActionCreator(SET_TAG_OPTIMIZED_PAGE_TAG_DATA_SOURCE, 'param');
+export const setTag2DataSource = makeActionCreator(SET_TAG_OPTIMIZED_PAGE_TAG_2_DATA_SOURCE, 'param');
 
 
 export function fetchGetSelectDataSource() {

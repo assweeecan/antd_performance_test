@@ -26,7 +26,7 @@ class TagGroupA extends React.Component {
   constructor(props) {
     super(props);
     const options = calOptions(props.options || []);
-    const value = props.value || [];
+    const value = props.value || options.map(e => e.value);
     const valueIndex = calValueIndex(value);
     this.state = {
       options,
@@ -46,8 +46,8 @@ class TagGroupA extends React.Component {
         this.setState({ value, valueIndex });
       }
     }
-    if (shouldUpdate(['value'], prevProps, nextProps)) {
-      const value = nextProps.value || [];
+    if (shouldUpdate(['options', 'value'], prevProps, nextProps)) {
+      const value = nextProps.value || nextProps.options.map(e => e.value);
       const valueIndex = calValueIndex(value);
       this.setState({ value, valueIndex });
     }
@@ -79,7 +79,7 @@ class TagGroupA extends React.Component {
 
 TagGroupA.defaultProps = {
   options: [],
-  value: [],
+  value: undefined,
   color: '',
 };
 
@@ -88,10 +88,10 @@ TagGroupA.propTypes = {
     PropTypes.arrayOf(PropTypes.string),
     PropTypes.arrayOf(PropTypes.object),
   ]),
-  value: PropTypes.arrayOf(PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ])),
+  value: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.arrayOf(PropTypes.number),
+  ]),
   color: PropTypes.string,
 };
 

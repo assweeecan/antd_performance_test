@@ -11,7 +11,10 @@ import { Col, Row } from 'antd';
 import * as reducers from '../reducers';
 
 import SelectPage from './select-page';
+import SelectOptimizedPage from './select-optimized-page';
 import CheckboxPage from './checkbox-page';
+import CheckboxOptimizedPage from './checkbox-optimized-page';
+import TagOptimizedPage from './tag-optimized-page';
 import TagPage from './tag-page';
 import Header from '../components/header';
 import NavBar from '../containers/nav-bar';
@@ -42,8 +45,11 @@ const RouterComponent = () => (
             </Col>
             <Col sm={20}>
               <Switch>
-                <Route path="/select-page" component={SelectPage} />
                 <Route path="/checkbox-page" component={CheckboxPage} />
+                <Route path="/checkbox-optimized-page" component={CheckboxOptimizedPage} />
+                <Route path="/select-page" component={SelectPage} />
+                <Route path="/select-optimized-page" component={SelectOptimizedPage} />
+                <Route path="/tag-optimized-page" component={TagOptimizedPage} />
                 <Route path="/tag-page" component={TagPage} />
               </Switch>
             </Col>
