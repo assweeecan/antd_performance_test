@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
@@ -82,8 +83,15 @@ class CheckboxOptimizedPage extends React.Component {
     return (
       <Form layout="horizontal" onSubmit={this.handleSubmit}>
         <div className="no-anime">
+
           <FormItem
-            label="下拉多选框"
+            {...formItemNoLabelStyle}
+          >
+            <Button type="primary">开始测试</Button>
+          </FormItem>
+
+          <FormItem
+            label="选择框"
             {...formItemStyle}
           >
             <Checkbox onChange={this.handleSelectAllChange}>全选</Checkbox>
@@ -95,7 +103,7 @@ class CheckboxOptimizedPage extends React.Component {
           </FormItem>
 
           <FormItem
-            label="下拉多选框"
+            label="选择框"
             {...formItemStyle}
           >
             <Checkbox onChange={this.handleSelectAll2Change}>全选</Checkbox>
@@ -105,11 +113,13 @@ class CheckboxOptimizedPage extends React.Component {
               )}
             </div>
           </FormItem>
+
           <FormItem
             {...formItemNoLabelStyle}
           >
             <Button type="primary" htmlType="submit">确定</Button>
           </FormItem>
+
         </div>
       </Form>
     );

@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
-  Button, Checkbox, Col, Form, Icon, Row,
+  Button, Checkbox, Form,
 } from 'antd';
 
 import * as actions from '../actions/checkbox-page';
@@ -15,14 +16,6 @@ class CheckboxPage extends React.Component {
   componentDidMount() {
     const { init } = this.props;
     init();
-  }
-
-  componentWillUpdate() {
-    console.time('CheckboxOptimizedPage');
-  }
-
-  componentDidUpdate() {
-    console.timeEnd('CheckboxOptimizedPage');
   }
 
   handleSelectAllChange = (event) => {
@@ -81,19 +74,27 @@ class CheckboxPage extends React.Component {
 
     return (
       <Form layout="horizontal" onSubmit={this.handleSubmit}>
+
         <FormItem
-          label="下拉多选框"
+          {...formItemNoLabelStyle}
+        >
+          <Button type="primary">开始测试</Button>
+        </FormItem>
+
+        <FormItem
+          label="选择框"
           {...formItemStyle}
         >
           <Checkbox onChange={this.handleSelectAllChange}>全选</Checkbox>
           <div style={{ maxHeight: 300, overflowY: 'auto' }}>
             {getFieldDecorator('select', {})(
-              <CheckboxGroup options={checkboxDataSource} />
+              <CheckboxGroup options={checkboxDataSource} />,
             )}
           </div>
         </FormItem>
+
         <FormItem
-          label="下拉多选框"
+          label="选择框"
           {...formItemStyle}
         >
           <Checkbox onChange={this.handleSelectAll2Change}>全选</Checkbox>
@@ -108,14 +109,27 @@ class CheckboxPage extends React.Component {
         >
           <Button type="primary" htmlType="submit">确定</Button>
         </FormItem>
+
       </Form>
     );
   }
 }
 
-CheckboxPage.defaultProps = {};
+CheckboxPage.defaultProps = {
+  form: {},
+  checkboxDataSource: [],
+  checkbox2DataSource: [],
 
-CheckboxPage.propTypes = {};
+  init: () => undefined,
+};
+
+CheckboxPage.propTypes = {
+  form: PropTypes.objectOf(PropTypes.func),
+  checkboxDataSource: PropTypes.arrayOf(PropTypes.any),
+  checkbox2DataSource: PropTypes.arrayOf(PropTypes.any),
+
+  init: PropTypes.func,
+};
 
 function mapStateToProps(state) {
   return state.checkboxPage;

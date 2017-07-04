@@ -1,16 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
-  Form, Select, Input, Radio, Button, Col, Tag,
+  Form, Input, Button, Tag,
 } from 'antd';
 
 import * as actions from '../actions/tag-page';
 
 const FormItem = Form.Item;
-const Option = Select.Option;
-const RadioButton = Radio.Button;
-const RadioGroup = Radio.Group;
 
 
 class TagPage extends React.Component {
@@ -53,7 +51,6 @@ class TagPage extends React.Component {
 
     const {
       tagDataSource,
-      tag2DataSource,
     } = this.props;
 
     const { getFieldDecorator } = this.props.form;
@@ -62,11 +59,17 @@ class TagPage extends React.Component {
       <Form layout="horizontal" onSubmit={this.handleSubmit}>
 
         <FormItem
+          {...formItemNoLabelStyle}
+        >
+          <Button type="primary">开始测试</Button>
+        </FormItem>
+
+        <FormItem
           label="输入框"
           {...formItemStyle}
         >
           {getFieldDecorator('theInput', {})(
-            <Input />
+            <Input />,
           )}
         </FormItem>
 
@@ -91,9 +94,19 @@ class TagPage extends React.Component {
   }
 }
 
-TagPage.defaultProps = {};
+TagPage.defaultProps = {
+  form: {},
+  tagDataSource: [],
 
-TagPage.propTypes = {};
+  init: () => undefined,
+};
+
+TagPage.propTypes = {
+  form: PropTypes.objectOf(PropTypes.func),
+  tagDataSource: PropTypes.arrayOf(PropTypes.any),
+
+  init: PropTypes.func,
+};
 
 function mapStateToProps(state) {
   return state.tagPage;

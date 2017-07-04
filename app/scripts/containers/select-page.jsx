@@ -1,17 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
-  Form, Select, InputNumber, DatePicker, TimePicker, Switch, Radio,
-  Cascader, Slider, Button, Col, Upload, Icon
+  Form, Select, Button,
 } from 'antd';
 
 import * as actions from '../actions/select-page';
 
+import autoOperate from '../auto-operate/select-page';
+
 const FormItem = Form.Item;
 const Option = Select.Option;
-const RadioButton = Radio.Button;
-const RadioGroup = Radio.Group;
 
 
 class SelectPage extends React.Component {
@@ -64,6 +64,13 @@ class SelectPage extends React.Component {
       <Form layout="horizontal" onSubmit={this.handleSubmit}>
 
         <FormItem
+          {...formItemNoLabelStyle}
+        >
+          <Button type="primary" onClick={autoOperate}>开始测试</Button>
+        </FormItem>
+
+        <FormItem
+          className="select-wrap"
           label="下拉多选框"
           {...formItemStyle}
         >
@@ -79,6 +86,7 @@ class SelectPage extends React.Component {
         </FormItem>
 
         <FormItem
+          className="select2-wrap"
           label="下拉多选框"
           {...formItemStyle}
         >
@@ -94,6 +102,7 @@ class SelectPage extends React.Component {
         </FormItem>
 
         <FormItem
+          className="select3-wrap"
           label="下拉多选框"
           {...formItemStyle}
         >
@@ -118,9 +127,23 @@ class SelectPage extends React.Component {
   }
 }
 
-SelectPage.defaultProps = {};
+SelectPage.defaultProps = {
+  form: {},
+  selectDataSource: [],
+  select2DataSource: [],
+  select3DataSource: [],
 
-SelectPage.propTypes = {};
+  init: () => undefined,
+};
+
+SelectPage.propTypes = {
+  form: () => undefined,
+  selectDataSource: PropTypes.arrayOf(PropTypes.any),
+  select2DataSource: PropTypes.arrayOf(PropTypes.any),
+  select3DataSource: PropTypes.arrayOf(PropTypes.any),
+
+  init: PropTypes.func,
+};
 
 function mapStateToProps(state) {
   return state.selectPage;

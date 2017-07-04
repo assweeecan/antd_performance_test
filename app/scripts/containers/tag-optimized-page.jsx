@@ -1,18 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
-  Form, Select, Input, Radio, Button, Col,
+  Form, Input, Button,
 } from 'antd';
 import TagGroupA from '../components/commons/tag-group';
 
 import * as actions from '../actions/tag-optimized-page';
 
 const FormItem = Form.Item;
-const Option = Select.Option;
-const RadioButton = Radio.Button;
-const RadioGroup = Radio.Group;
-
 
 class TagOptimizedPage extends React.Component {
   componentDidMount() {
@@ -54,7 +51,6 @@ class TagOptimizedPage extends React.Component {
 
     const {
       tagDataSource,
-      tag2DataSource,
     } = this.props;
 
     const { getFieldDecorator } = this.props.form;
@@ -63,11 +59,17 @@ class TagOptimizedPage extends React.Component {
       <Form layout="horizontal" onSubmit={this.handleSubmit}>
 
         <FormItem
+          {...formItemNoLabelStyle}
+        >
+          <Button type="primary">开始测试</Button>
+        </FormItem>
+
+        <FormItem
           label="输入框"
           {...formItemStyle}
         >
           {getFieldDecorator('theInput', {})(
-            <Input />
+            <Input />,
           )}
         </FormItem>
 
@@ -90,9 +92,20 @@ class TagOptimizedPage extends React.Component {
   }
 }
 
-TagOptimizedPage.defaultProps = {};
 
-TagOptimizedPage.propTypes = {};
+TagOptimizedPage.defaultProps = {
+  form: {},
+  tagDataSource: [],
+
+  init: () => undefined,
+};
+
+TagOptimizedPage.propTypes = {
+  form: PropTypes.objectOf(PropTypes.func),
+  tagDataSource: PropTypes.arrayOf(PropTypes.any),
+
+  init: PropTypes.func,
+};
 
 function mapStateToProps(state) {
   return state.tagOptimizedPage;

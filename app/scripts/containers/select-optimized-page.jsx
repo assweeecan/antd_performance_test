@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
@@ -18,14 +19,6 @@ class SelectOptimizedPage extends React.Component {
   componentDidMount() {
     const { init } = this.props;
     init();
-  }
-
-  componentWillUpdate() {
-    console.time('SelectOptimizedPage');
-  }
-
-  componentDidUpdate() {
-    console.timeEnd('SelectOptimizedPage');
   }
 
   formItemStyle = {
@@ -62,6 +55,12 @@ class SelectOptimizedPage extends React.Component {
 
     return (
       <Form layout="horizontal" onSubmit={this.handleSubmit}>
+
+        <FormItem
+          {...formItemNoLabelStyle}
+        >
+          <Button type="primary">开始测试</Button>
+        </FormItem>
 
         <FormItem
           label="下拉多选框"
