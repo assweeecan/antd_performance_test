@@ -8,6 +8,8 @@ import {
 
 import * as actions from '../actions/tag-page';
 
+import autoOperate from '../auto-operate/tag-page';
+
 const FormItem = Form.Item;
 
 
@@ -56,12 +58,12 @@ class TagPage extends React.Component {
     const { getFieldDecorator } = this.props.form;
 
     return (
-      <Form layout="horizontal" onSubmit={this.handleSubmit}>
+      <Form layout="horizontal">
 
         <FormItem
           {...formItemNoLabelStyle}
         >
-          <Button type="primary">开始测试</Button>
+          <Button type="primary" onClick={autoOperate}>开始测试</Button>
         </FormItem>
 
         <FormItem

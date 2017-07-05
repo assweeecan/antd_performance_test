@@ -56,7 +56,7 @@ class TagOptimizedPage extends React.Component {
     const { getFieldDecorator } = this.props.form;
 
     return (
-      <Form layout="horizontal" onSubmit={this.handleSubmit}>
+      <Form layout="horizontal">
 
         <FormItem
           {...formItemNoLabelStyle}

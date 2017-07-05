@@ -8,6 +8,8 @@ import {
 
 import * as actions from '../actions/checkbox-optimized-page';
 
+import autoOperate from '../auto-operate/checkbox-page';
+
 const FormItem = Form.Item;
 const CheckboxGroup = Checkbox.Group;
 
@@ -19,11 +21,11 @@ class CheckboxOptimizedPage extends React.Component {
   }
 
   componentWillUpdate() {
-    console.time('CheckboxPage');
+    console.time('CheckboxOptimizedPage');
   }
 
   componentDidUpdate() {
-    console.timeEnd('CheckboxPage');
+    console.timeEnd('CheckboxOptimizedPage');
   }
 
   handleSelectAllChange = (event) => {
@@ -81,20 +83,20 @@ class CheckboxOptimizedPage extends React.Component {
     const { getFieldDecorator } = this.props.form;
 
     return (
-      <Form layout="horizontal" onSubmit={this.handleSubmit}>
+      <Form layout="horizontal">
         <div className="no-anime">
 
           <FormItem
             {...formItemNoLabelStyle}
           >
-            <Button type="primary">开始测试</Button>
+            <Button type="primary" onClick={autoOperate}>开始测试</Button>
           </FormItem>
 
           <FormItem
             label="选择框"
             {...formItemStyle}
           >
-            <Checkbox onChange={this.handleSelectAllChange}>全选</Checkbox>
+            <Checkbox className="select-all" onChange={this.handleSelectAllChange}>全选</Checkbox>
             <div style={{ maxHeight: 300, overflowY: 'auto' }}>
               {getFieldDecorator('select', {})(
                 <CheckboxGroup options={checkboxDataSource} />

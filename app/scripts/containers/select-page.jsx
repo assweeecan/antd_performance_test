@@ -61,68 +61,71 @@ class SelectPage extends React.Component {
     const { getFieldDecorator } = this.props.form;
 
     return (
-      <Form layout="horizontal" onSubmit={this.handleSubmit}>
+      <div>
 
-        <FormItem
-          {...formItemNoLabelStyle}
-        >
-          <Button type="primary" onClick={autoOperate}>开始测试</Button>
-        </FormItem>
+        <Form layout="horizontal">
 
-        <FormItem
-          className="select-wrap"
-          label="下拉多选框"
-          {...formItemStyle}
-        >
-          {getFieldDecorator('select', {})(
-            <Select
-              mode="multiple"
-            >
-              {selectDataSource.map(e => (
-                <Option key={e} value={e}>{e.slice(-8)}</Option>
-              ))}
-            </Select>,
-          )}
-        </FormItem>
+          <FormItem
+            {...formItemNoLabelStyle}
+          >
+            <Button type="primary" htmlType="button" onClick={autoOperate}>开始测试</Button>
+          </FormItem>
 
-        <FormItem
-          className="select2-wrap"
-          label="下拉多选框"
-          {...formItemStyle}
-        >
-          {getFieldDecorator('select2', {})(
-            <Select
-              mode="multiple"
-            >
-              {select2DataSource.map(e => (
-                <Option key={e} value={e}>{e.slice(-8)}</Option>
-              ))}
-            </Select>,
-          )}
-        </FormItem>
+          <FormItem
+            className="select-wrap"
+            label="下拉多选框"
+            {...formItemStyle}
+          >
+            {getFieldDecorator('select', {})(
+              <Select
+                mode="multiple"
+              >
+                {selectDataSource.map(e => (
+                  <Option key={e} value={e}>{e.slice(-8)}</Option>
+                ))}
+              </Select>,
+            )}
+          </FormItem>
 
-        <FormItem
-          className="select3-wrap"
-          label="下拉多选框"
-          {...formItemStyle}
-        >
-          {getFieldDecorator('select3', {})(
-            <Select
-              mode="multiple"
-            >
-              {select3DataSource.map(e => (
-                <Option key={e} value={e}>{e.slice(-8)}</Option>
-              ))}
-            </Select>,
-          )}
-        </FormItem>
+          <FormItem
+            className="select2-wrap"
+            label="下拉多选框"
+            {...formItemStyle}
+          >
+            {getFieldDecorator('select2', {})(
+              <Select
+                mode="multiple"
+              >
+                {select2DataSource.map(e => (
+                  <Option key={e} value={e}>{e.slice(-8)}</Option>
+                ))}
+              </Select>,
+            )}
+          </FormItem>
 
-        <FormItem
-          {...formItemNoLabelStyle}
-        >
-          <Button type="primary" htmlType="submit">确定</Button>
-        </FormItem>
-      </Form>
+          <FormItem
+            className="select3-wrap"
+            label="下拉多选框"
+            {...formItemStyle}
+          >
+            {getFieldDecorator('select3', {})(
+              <Select
+                mode="multiple"
+              >
+                {select3DataSource.map(e => (
+                  <Option key={e} value={e}>{e.slice(-8)}</Option>
+                ))}
+              </Select>,
+            )}
+          </FormItem>
+
+          <FormItem
+            {...formItemNoLabelStyle}
+          >
+            <Button type="primary" htmlType="submit" onClick={e => console.log(e)}>确定</Button>
+          </FormItem>
+        </Form>
+      </div>
     );
   }
 }

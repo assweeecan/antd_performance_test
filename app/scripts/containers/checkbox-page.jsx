@@ -8,6 +8,8 @@ import {
 
 import * as actions from '../actions/checkbox-page';
 
+import autoOperate from '../auto-operate/checkbox-page';
+
 const FormItem = Form.Item;
 const CheckboxGroup = Checkbox.Group;
 
@@ -18,14 +20,22 @@ class CheckboxPage extends React.Component {
     init();
   }
 
+  componentWillUpdate() {
+    console.time('CheckboxPage');
+  }
+
+  componentDidUpdate() {
+    console.timeEnd('CheckboxPage');
+  }
+
   handleSelectAllChange = (event) => {
     const { setFieldsValue } = this.props.form;
     const { checkboxDataSource } = this.props;
     const { checked } = event.target;
     if (checked) {
-      setFieldsValue({ select: checkboxDataSource })
+      setFieldsValue({ select: checkboxDataSource });
     } else {
-      setFieldsValue({ select: [] })
+      setFieldsValue({ select: [] });
     }
   }
 
@@ -34,9 +44,9 @@ class CheckboxPage extends React.Component {
     const { checkbox2DataSource } = this.props;
     const { checked } = event.target;
     if (checked) {
-      setFieldsValue({ select2: checkbox2DataSource })
+      setFieldsValue({ select2: checkbox2DataSource });
     } else {
-      setFieldsValue({ select2: [] })
+      setFieldsValue({ select2: [] });
     }
   }
 
@@ -73,19 +83,19 @@ class CheckboxPage extends React.Component {
     const { getFieldDecorator } = this.props.form;
 
     return (
-      <Form layout="horizontal" onSubmit={this.handleSubmit}>
+      <Form layout="horizontal">
 
         <FormItem
           {...formItemNoLabelStyle}
         >
-          <Button type="primary">开始测试</Button>
+          <Button type="primary" onClick={autoOperate}>开始测试</Button>
         </FormItem>
 
         <FormItem
           label="选择框"
           {...formItemStyle}
         >
-          <Checkbox onChange={this.handleSelectAllChange}>全选</Checkbox>
+          <Checkbox className="select-all" onChange={this.handleSelectAllChange}>全选</Checkbox>
           <div style={{ maxHeight: 300, overflowY: 'auto' }}>
             {getFieldDecorator('select', {})(
               <CheckboxGroup options={checkboxDataSource} />,
