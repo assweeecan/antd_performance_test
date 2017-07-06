@@ -153,9 +153,6 @@ module.exports = function (env = defaultEnv) {
         comments: false,
         sourceMap: false,
         compress: {
-          // 在UglifyJs删除没有用到的代码时不输出警告
-          warnings: false,
-          // 删除所有的 `console` 语句
           // 还可以兼容ie浏览器
           drop_console: true,
           // 内嵌定义了但是只用到一次的变量
@@ -167,7 +164,7 @@ module.exports = function (env = defaultEnv) {
 
       // 生产环境
       new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify('product'),
+        'process.env.NODE_ENV': JSON.stringify('development'),
       }),
     ],
 
