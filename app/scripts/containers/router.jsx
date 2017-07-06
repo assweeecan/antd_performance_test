@@ -32,8 +32,6 @@ const store = createStore(
   ),
 );
 
-console.log(history);
-
 
 const RouterComponent = () => (
   <Provider store={store}>

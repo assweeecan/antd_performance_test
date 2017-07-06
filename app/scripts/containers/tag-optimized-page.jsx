@@ -9,6 +9,8 @@ import TagGroupA from '../components/commons/tag-group';
 
 import * as actions from '../actions/tag-optimized-page';
 
+import autoOperate from '../auto-operate/tag-page';
+
 const FormItem = Form.Item;
 
 class TagOptimizedPage extends React.Component {
@@ -61,7 +63,7 @@ class TagOptimizedPage extends React.Component {
         <FormItem
           {...formItemNoLabelStyle}
         >
-          <Button type="primary">开始测试</Button>
+          <Button type="primary" onClick={autoOperate}>开始测试</Button>
         </FormItem>
 
         <FormItem

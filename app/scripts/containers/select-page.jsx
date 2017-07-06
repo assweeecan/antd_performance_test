@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
-  Form, Select, Button,
+  Form, Select, Button, Input,
 } from 'antd';
 
 import * as actions from '../actions/select-page';
@@ -69,6 +69,15 @@ class SelectPage extends React.Component {
             {...formItemNoLabelStyle}
           >
             <Button type="primary" htmlType="button" onClick={autoOperate}>开始测试</Button>
+          </FormItem>
+
+          <FormItem
+            label="输入框"
+            {...formItemStyle}
+          >
+            {getFieldDecorator('theInput', {})(
+              <Input />,
+            )}
           </FormItem>
 
           <FormItem

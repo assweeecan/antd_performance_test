@@ -3,22 +3,30 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
-  Form, Select, InputNumber, DatePicker, TimePicker, Switch, Radio,
-  Cascader, Slider, Button, Col, Upload, Icon
+  Form, Button, Input,
 } from 'antd';
 
 import * as actions from '../actions/select-page';
 
+import SelectA from '../components/commons/select-a';
+
+import autoOperate from '../auto-operate/select-page';
+
 const FormItem = Form.Item;
-const Option = Select.Option;
-const RadioButton = Radio.Button;
-const RadioGroup = Radio.Group;
 
 
 class SelectOptimizedPage extends React.Component {
   componentDidMount() {
     const { init } = this.props;
     init();
+  }
+
+  componentWillUpdate() {
+    console.time('SelectOptimizedPage');
+  }
+
+  componentDidUpdate() {
+    console.timeEnd('SelectOptimizedPage');
   }
 
   formItemStyle = {
@@ -59,21 +67,15 @@ class SelectOptimizedPage extends React.Component {
         <FormItem
           {...formItemNoLabelStyle}
         >
-          <Button type="primary">开始测试</Button>
+          <Button type="primary" onClick={autoOperate}>开始测试</Button>
         </FormItem>
 
         <FormItem
-          label="下拉多选框"
+          label="输入框"
           {...formItemStyle}
         >
-          {getFieldDecorator('select', {})(
-            <Select
-              mode="multiple"
-            >
-              {selectDataSource.map(e => (
-                <Option key={e} value={e}>{e.slice(-8)}</Option>
-              ))}
-            </Select>,
+          {getFieldDecorator('theInput', {})(
+            <Input />,
           )}
         </FormItem>
 
@@ -81,30 +83,21 @@ class SelectOptimizedPage extends React.Component {
           label="下拉多选框"
           {...formItemStyle}
         >
-          {getFieldDecorator('select2', {})(
-            <Select
-              mode="multiple"
-            >
-              {select2DataSource.map(e => (
-                <Option key={e} value={e}>{e.slice(-8)}</Option>
-              ))}
-            </Select>,
-          )}
+          <SelectA options={selectDataSource} />
         </FormItem>
 
         <FormItem
           label="下拉多选框"
           {...formItemStyle}
         >
-          {getFieldDecorator('select3', {})(
-            <Select
-              mode="multiple"
-            >
-              {select3DataSource.map(e => (
-                <Option key={e} value={e}>{e.slice(-8)}</Option>
-              ))}
-            </Select>,
-          )}
+          <SelectA options={select2DataSource} />
+        </FormItem>
+
+        <FormItem
+          label="下拉多选框"
+          {...formItemStyle}
+        >
+          <SelectA options={select3DataSource} />
         </FormItem>
 
         <FormItem
@@ -117,9 +110,23 @@ class SelectOptimizedPage extends React.Component {
   }
 }
 
-SelectOptimizedPage.defaultProps = {};
+SelectOptimizedPage.defaultProps = {
+  form: {},
+  selectDataSource: [],
+  select2DataSource: [],
+  select3DataSource: [],
 
-SelectOptimizedPage.propTypes = {};
+  init: () => undefined,
+};
+
+SelectOptimizedPage.propTypes = {
+  form: () => undefined,
+  selectDataSource: PropTypes.arrayOf(PropTypes.any),
+  select2DataSource: PropTypes.arrayOf(PropTypes.any),
+  select3DataSource: PropTypes.arrayOf(PropTypes.any),
+
+  init: PropTypes.func,
+};
 
 function mapStateToProps(state) {
   return state.selectPage;
