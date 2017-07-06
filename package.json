@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server --progress",
-    "buildstart": "webpack --progress  --config webpack.config.js",
+    "buildstart": "webpack-dev-server --progress  --config webpack.build.config.js",
     "build": "del /Q .\\build & rm -rf ./build & webpack --progress --config webpack.build.config.js"
   },
   "author": "",
