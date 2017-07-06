@@ -14,13 +14,16 @@ module.exports = function (env = defaultEnv) {
   return {
     // 入口文件
     entry: {
+      commons: ['babel-polyfill', 'matchmedia-polyfill', 'moment', 'classnames', 'history',
+        'react', 'react-dom', 'react-redux', 'react-router', 'react-router-dom', 'react-router-redux', 'prop-types',
+        'redux', 'redux-thunk', 'should-update', 'urijs', 'qs'],
       index: path.resolve(ROOT_PATH, 'app/scripts/index.jsx'),
     },
 
     // 输出路径
     output: {
       path: path.join(ROOT_PATH, 'dist'),
-      filename: '[name].js',
+      filename: env.noNeedHash ? '[name].js' : '[name]-[chunkhash:6].js',
       publicPath: '/antd_performance_test/dist/',
     },
 
@@ -107,7 +110,10 @@ module.exports = function (env = defaultEnv) {
                   'stage-2',
                   'react',
                 ],
-                plugins: [],
+                plugins: [['import', {
+                  libraryName: 'antd',
+                  style: true,
+                }]],
               },
             },
             // 'eslint-loader',
@@ -130,7 +136,7 @@ module.exports = function (env = defaultEnv) {
     plugins: [
       // 将部分内容输出成文本文件
       new ExtractTextPlugin({
-        filename: '[name].css',
+        filename: env.noNeedHash ? '[name].css' : '[name]-[chunkhash:6].css',
         disable: false,
         allChunks: true,
       }),
@@ -141,7 +147,7 @@ module.exports = function (env = defaultEnv) {
         filename: 'index.html',
         template: 'app/scripts/index.html',
         //chunks这个参数告诉插件要引用entry里面的哪几个入口
-        chunks: ['index'],
+        chunks: ['commons', 'index'],
         //要把script插入到标签里
         inject: 'body',
       }),
@@ -151,7 +157,7 @@ module.exports = function (env = defaultEnv) {
         minimize: true,
         beautify: false,
         comments: false,
-        sourceMap: false,
+        sourceMap: true,
         compress: {
           // 保留警告
           warnings: true,
@@ -170,6 +176,11 @@ module.exports = function (env = defaultEnv) {
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('production'),
       }),
+
+      new webpack.optimize.CommonsChunkPlugin({
+        name: 'commons',
+        filename: env.noNeedHash ? 'commons.js' : 'commons-[chunkhash:6].js',
+      }),
     ],
 
     // 设置
@@ -186,4 +197,5 @@ module.exports = function (env = defaultEnv) {
       // mainFields: ['jsnext:main', 'main'],
     },
   };
-};
+}
+;
