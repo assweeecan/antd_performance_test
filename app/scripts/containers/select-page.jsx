@@ -90,7 +90,7 @@ class SelectPage extends React.Component {
                 mode="multiple"
               >
                 {selectDataSource.map(e => (
-                  <Option key={e} value={e}>{e.slice(-8)}</Option>
+                  <Option key={e} value={e}>{e}</Option>
                 ))}
               </Select>,
             )}
@@ -106,7 +106,7 @@ class SelectPage extends React.Component {
                 mode="multiple"
               >
                 {select2DataSource.map(e => (
-                  <Option key={e} value={e}>{e.slice(-8)}</Option>
+                  <Option key={e} value={e}>{e}</Option>
                 ))}
               </Select>,
             )}
@@ -122,7 +122,7 @@ class SelectPage extends React.Component {
                 mode="multiple"
               >
                 {select3DataSource.map(e => (
-                  <Option key={e} value={e}>{e.slice(-8)}</Option>
+                  <Option key={e} value={e}>{e}</Option>
                 ))}
               </Select>,
             )}

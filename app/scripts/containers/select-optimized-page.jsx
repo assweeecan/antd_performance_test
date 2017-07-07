@@ -83,21 +83,30 @@ class SelectOptimizedPage extends React.Component {
           label="下拉多选框"
           {...formItemStyle}
         >
-          <SelectA options={selectDataSource} />
+          <SelectA
+            mode="multiple"
+            options={selectDataSource}
+          />
         </FormItem>
 
         <FormItem
           label="下拉多选框"
           {...formItemStyle}
         >
-          <SelectA options={select2DataSource} />
+          <SelectA
+            mode="multiple"
+            options={select2DataSource}
+          />
         </FormItem>
 
         <FormItem
           label="下拉多选框"
           {...formItemStyle}
         >
-          <SelectA options={select3DataSource} />
+          <SelectA
+            mode="multiple"
+            options={select3DataSource}
+          />
         </FormItem>
 
         <FormItem
